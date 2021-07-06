@@ -23,27 +23,7 @@ const Users = () => {
   );
 };
 
-{
-  /* <S.User key={user.id.value}>
-  <S.UserPicture src={user?.picture.large} alt="" />
-  <S.UserInfo>
-    <Text size="22px" bold>
-      {user?.name.title} {user?.name.first} {user?.name.last}
-    </Text>
-    <Text size="14px">{user?.email}</Text>
-    <Text size="14px">
-      {user?.location.street.number} {user?.location.street.name}
-    </Text>
-    <Text size="14px">
-      {user?.location.city} {user?.location.country}
-    </Text>
-  </S.UserInfo>
-</S.User> */
-}
-
 export default Users;
-
-//Navbar
 
 // Task
 // Automatically loads the first 25 records
@@ -61,6 +41,7 @@ export default Users;
 //3:
 ////Favorite:
 //////Implement the favorite button click functionality
+//////Implement the block button click functionality
 //////Implement a favorite users page
 
 //4:

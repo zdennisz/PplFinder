@@ -42,7 +42,7 @@ const UserList = ({ users, isLoading }) => {
             <S.IconButtons isHovered={user?.id?.value === hoveredUserId}>
               <S.IconButtonWrapper>
                 <IconButton>
-                  <FavoriteIcon color="primary" />
+                  <FavoriteIcon color="error" />
                 </IconButton>
               </S.IconButtonWrapper>
               <S.IconButtonWrapper>

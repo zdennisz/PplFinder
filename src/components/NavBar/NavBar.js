@@ -21,6 +21,7 @@ const NavBar = () => {
       >
         <Tab label="Users" index={0} />
         <Tab label="Favorites" index={1} />
+        <Tab label="Blocked" index={2} />
       </Tabs>
     </AppBar>
   );
