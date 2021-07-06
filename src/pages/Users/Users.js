@@ -1,5 +1,6 @@
 import React from "react";
 import Text from "components/Text";
+import Spinner from "components/Spinner";
 import { usePeopleFetch } from "hooks";
 import * as S from "./style";
 
@@ -36,6 +37,16 @@ const Users = () => {
               </S.User>
             );
           })}
+          {isLoading && (
+            <S.SpinnerWrapper>
+              <Spinner
+                color="primary"
+                size="45px"
+                thickness={5}
+                variant="indeterminate"
+              />
+            </S.SpinnerWrapper>
+          )}
         </S.UsersData>
       </S.Content>
     </S.Users>

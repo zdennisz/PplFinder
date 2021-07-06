@@ -41,6 +41,11 @@ export const UsersData = styled.div`
   overflow-y: auto;
 `;
 
+export const SpinnerWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
 export const User = styled.div`
   display: flex;
   justify-content: center;
