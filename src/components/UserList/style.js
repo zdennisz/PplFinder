@@ -4,7 +4,7 @@ export const UserList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 35px;
-  max-width: 400px;
+  max-width: 500px;
   width: 100%;
   height: 100vh;
   margin-block-start: 30px;
@@ -34,4 +34,13 @@ export const UserPicture = styled.img`
 export const SpinnerWrapper = styled.div`
   display: flex;
   justify-content: center;
+`;
+
+export const IconButtonWrapper = styled.div``;
+
+export const IconButtons = styled.div`
+  display: flex;
+  flex-direction: column;
+  opacity: ${({ isHovered }) => (isHovered ? 1 : 0)};
+  transition: opacity 0.2s ease-in-out;
 `;

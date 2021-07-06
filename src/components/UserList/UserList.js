@@ -1,14 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import Text from "components/Text";
 import Spinner from "components/Spinner";
+import IconButton from "@material-ui/core/IconButton";
+import BlockIcon from "@material-ui/icons/Block";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 import * as S from "./style";
 
 const UserList = ({ users, isLoading }) => {
+  const [hoveredUserId, setHoveredUserId] = useState();
+
+  const handleMouseEnter = (id) => {
+    setHoveredUserId(id);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredUserId();
+  };
+
   return (
     <S.UserList>
       {users.map((user) => {
         return (
-          <S.User key={user?.id?.value}>
+          <S.User
+            key={user?.id?.value}
+            onMouseEnter={() => handleMouseEnter(user?.id?.value)}
+            onMouseLeave={handleMouseLeave}
+          >
             <S.UserPicture src={user?.picture.large} alt="" />
             <S.UserInfo>
               <Text size="22px" bold>
@@ -22,6 +39,18 @@ const UserList = ({ users, isLoading }) => {
                 {user?.location.city} {user?.location.country}
               </Text>
             </S.UserInfo>
+            <S.IconButtons isHovered={user?.id?.value === hoveredUserId}>
+              <S.IconButtonWrapper>
+                <IconButton>
+                  <FavoriteIcon color="primary" />
+                </IconButton>
+              </S.IconButtonWrapper>
+              <S.IconButtonWrapper>
+                <IconButton>
+                  <BlockIcon color="disabled" />
+                </IconButton>
+              </S.IconButtonWrapper>
+            </S.IconButtons>
           </S.User>
         );
       })}

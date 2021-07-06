@@ -14,7 +14,7 @@ const Users = () => {
       <S.Content>
         <S.Header>
           <Text size="64px" bold>
-            Fetch Users
+            PplFinder
           </Text>
         </S.Header>
         <UserList users={users} isLoading={isLoading} />
