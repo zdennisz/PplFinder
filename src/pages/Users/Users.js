@@ -1,6 +1,6 @@
 import React from "react";
 import Text from "components/Text";
-import Spinner from "components/Spinner";
+import UserList from "components/UserList";
 import { usePeopleFetch } from "hooks";
 import * as S from "./style";
 
@@ -17,37 +17,7 @@ const Users = () => {
             Fetch Users
           </Text>
         </S.Header>
-        <S.UsersData>
-          {users.map((user) => {
-            return (
-              <S.User>
-                <S.UserPicture src={user?.picture.large} alt="" />
-                <S.UserInfo>
-                  <Text size="22px" bold>
-                    {user?.name.title} {user?.name.first} {user?.name.last}
-                  </Text>
-                  <Text size="14px">{user?.email}</Text>
-                  <Text size="14px">
-                    {user?.location.street.number} {user?.location.street.name}
-                  </Text>
-                  <Text size="14px">
-                    {user?.location.city} {user?.location.country}
-                  </Text>
-                </S.UserInfo>
-              </S.User>
-            );
-          })}
-          {isLoading && (
-            <S.SpinnerWrapper>
-              <Spinner
-                color="primary"
-                size="45px"
-                thickness={5}
-                variant="indeterminate"
-              />
-            </S.SpinnerWrapper>
-          )}
-        </S.UsersData>
+        <UserList users={users} isLoading={isLoading} />
       </S.Content>
     </S.Users>
   );
@@ -73,7 +43,6 @@ const Users = () => {
 
 export default Users;
 
-//Create the spinner component
 //Navbar
 
 // Task
