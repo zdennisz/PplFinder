@@ -1,8 +1,3 @@
-export const REST_METHODS = {
-  get: "get",
-  post: "post",
-};
-
 export const SIZE = {
   small: "small",
   medium: "medium",

@@ -14,7 +14,7 @@ const Users = () => {
     <S.Users>
       <S.Content>
         <S.Header>
-          <Text size="56px" bold>
+          <Text size="64px" bold>
             Fetch Users
           </Text>
         </S.Header>
