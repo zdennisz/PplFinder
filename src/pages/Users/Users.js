@@ -8,8 +8,6 @@ import * as S from "./style";
 const Users = () => {
   const { users, isLoading } = usePeopleFetch();
 
-  console.log(isLoading);
-
   return (
     <S.Users>
       <S.Content>
@@ -64,7 +62,6 @@ const Users = () => {
 
 export default Users;
 
-//UNINSTALL REDUX
 //Create the spinner component
 //Navbar
 
