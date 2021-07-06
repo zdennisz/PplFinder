@@ -15,7 +15,7 @@ const NavBar = () => {
       <Tabs
         value={value}
         onChange={handleChange}
-        aria-label="nav tabs example"
+        aria-label="Navigation"
         indicatorColor="primary"
         textColor="primary"
       >
