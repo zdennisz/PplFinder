@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Text from "components/Text";
 import Spinner from "components/Spinner";
 import CheckBox from "components/CheckBox";
@@ -20,10 +20,8 @@ const UserList = ({ users, isLoading }) => {
   return (
     <S.UserList>
       <S.Filters>
-        <CheckBox label="Male" />
-        <CheckBox label="Female" />
-        <CheckBox label="Brazil" />
-        <CheckBox label="Australia" />
+        <CheckBox value="BR" label="Brazil" />
+        <CheckBox value="AU" label="Australia" />
       </S.Filters>
       <S.List>
         {users.map((user, index) => {
@@ -54,12 +52,12 @@ const UserList = ({ users, isLoading }) => {
             </S.User>
           );
         })}
+        {isLoading && (
+          <S.SpinnerWrapper>
+            <Spinner color="primary" size="45px" thickness={6} variant="indeterminate" />
+          </S.SpinnerWrapper>
+        )}
       </S.List>
-      {isLoading && (
-        <S.SpinnerWrapper>
-          <Spinner color="primary" size="45px" thickness={6} variant="indeterminate" />
-        </S.SpinnerWrapper>
-      )}
     </S.UserList>
   );
 };

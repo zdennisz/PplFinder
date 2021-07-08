@@ -1,8 +1,5 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import * as C from "constant";
-
-//https://randomuser.me/api/?results=1
 
 export const usePeopleFetch = () => {
   const [users, setUsers] = useState([]);
@@ -12,14 +9,12 @@ export const usePeopleFetch = () => {
     fetchUsers();
   }, []);
 
-  async function fetchUsers(page = 1) {
+  async function fetchUsers() {
     setIsLoading(true);
-    const response = await axios.get(
-      `https://randomuser.me/api/?results=25&seed=${C.SEED}&page=${page}`
-    );
+    const response = await axios.get(`https://randomuser.me/api/?results=25&page=1`);
     setIsLoading(false);
     setUsers(response.data.results);
   }
 
-  return { users, isLoading };
+  return { users, isLoading, fetchUsers };
 };
