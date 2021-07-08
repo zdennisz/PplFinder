@@ -6,11 +6,11 @@ import * as S from "./style";
 
 //https://randomuser.me/api/?results=1
 
-const Users = () => {
+const Home = () => {
   const { users, isLoading } = usePeopleFetch();
 
   return (
-    <S.Users>
+    <S.Home>
       <S.Content>
         <S.Header>
           <Text size="64px" bold>
@@ -19,11 +19,11 @@ const Users = () => {
         </S.Header>
         <UserList users={users} isLoading={isLoading} />
       </S.Content>
-    </S.Users>
+    </S.Home>
   );
 };
 
-export default Users;
+export default Home;
 
 // Task
 // Automatically loads the first 25 records
