@@ -29,7 +29,7 @@ Above the list, there are several disfunctional checkboxes, which should add cou
 2. Checking one of the checkboxes should only fetch users from that specific country.
 3. Checking several checkboxes should fetch users from all of the selected countries.
 
-### Bonus:
+#### Bonus:
 
 1. Add another country filter.
 
@@ -49,7 +49,7 @@ Each user displays a heart icon while hovered, you need to implement the followi
 
 Implement an Infinity Scroll functionality, which would fetch additional users and add them to the list once scrolling all the way down.
 
-###Bonus - Your Personal Touch
+### Bonus - Your Personal Touch
 
 - This is your chance to get creative. Add a new, **cool and innovative** feature to the app.
 - Feel free to delete, add, and refactor components as you see fit.
