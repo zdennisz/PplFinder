@@ -29,7 +29,7 @@ Above the list, there are several disfunctional checkboxes, which should add cou
 2. Checking one of the checkboxes should only fetch users from that specific country.
 3. Checking several checkboxes should fetch users from all of the selected countries.
 
-#### Bonus:
+### Bonus:
 
 1. Add another country filter.
 
