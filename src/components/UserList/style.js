@@ -10,7 +10,7 @@ export const List = styled.div`
   flex-direction: column;
   gap: 35px;
   width: 500px;
-  max-height: calc(100vh - 270px);
+  height: calc(100vh - 270px);
   margin-block-start: 30px;
   overflow-y: auto;
 `;
