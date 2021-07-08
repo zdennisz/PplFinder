@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import * as C from "constant";
 
+//https://randomuser.me/api/?results=1
+
 export const usePeopleFetch = () => {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);

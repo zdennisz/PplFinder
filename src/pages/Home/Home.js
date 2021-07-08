@@ -4,8 +4,6 @@ import UserList from "components/UserList";
 import { usePeopleFetch } from "hooks";
 import * as S from "./style";
 
-//https://randomuser.me/api/?results=1
-
 const Home = () => {
   const { users, isLoading } = usePeopleFetch();
 
