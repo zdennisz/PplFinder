@@ -3,10 +3,15 @@ import styled from "styled-components";
 export const UserList = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+export const List = styled.div`
+  display: flex;
+  flex-direction: column;
   gap: 35px;
   max-width: 500px;
   width: 100%;
-  height: 100vh;
+  max-height: calc(100vh - 270px);
   margin-block-start: 30px;
   overflow-y: auto;
 `;
@@ -41,4 +46,12 @@ export const IconButtonWrapper = styled.div`
   flex-direction: column;
   opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
   transition: opacity 0.2s ease-in-out;
+`;
+
+export const Filters = styled.div`
+  display: flex;
+  justify-content: center;
+  & > * {
+    margin-inline-end: 8px;
+  }
 `;
