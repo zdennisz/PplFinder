@@ -39,7 +39,6 @@ export default Home;
 //3:
 ////Favorite:
 //////Implement the favorite button click functionality
-//////Implement the block button click functionality
 //////Implement a favorite users page
 
 //4:
