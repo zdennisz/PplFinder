@@ -1,40 +1,73 @@
-# react-9178 - A React/Redux starter kit
+# Ppl Finder
 
-By Omer Bresinski
+Welcome to the Ppl Finder application.
+This app is a simple application which displays randomly generated user information in a list, using the `randomuser.me` API.
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+To set up the test environment and get this app running locally all you need to do is:
 
-### `npm start`
+1. Make sure you have a [Github](https://github.com) account
+2. [Fork this repository](https://github.com/powerlink/PplFinder) to your GitHub account as a private repository.
+3. Clone your newly created repository
+4. In the created folder install the node modules `npm install`
+5. Run the app `npm start`
+6. Your local app should be available at `http://localhost:3000`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Your Tasks
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+This project includes 3 main tasks, all of which are mandatory, besides the bonus questions.
+You can and should learn new skills during the process, you may consult with Google and friends but you will need to explain why you implemented what you implemented, so be responsible for your code.
 
-### `npm test`
+**Important** - Please make sure to commit after each task, for example, after finishing the first task (Filters), commmit the files with a relevant message: "Task 1 - Filters", and so on.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Task 1 - Filters
 
-### `npm run build`
+Above the list, there are several disfunctional checkboxes, which should add country filters to the user request, you need to make them work as follows:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Leaving them all unchecked should display all countries.
+2. Checking one of the checkboxes should only fetch users from that specific country.
+3. Checking several checkboxes should fetch users from all of the selected countries.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Bonus:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Add another country filter.
 
-### `npm run eject`
+### Task 2 - Favorites
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Each user displays a heart icon while hovered, you need to implement the following functionality:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Add functionality which enables the user to select their favorite users.
+   - Should be persistent - refreshing or closing the site will not reset the favorites.
+2. Once a user is Favorited, the heart icon should stay visible even if the user is not currently being hovered over.
+3. Favorite Page
+   3.1. The Navbar has a Favorites tab, which should navigate to a new Favorite Page once clicked.
+   3.2. The Favorite Page should display all of the Favorited users.
+   3.3. Clicking on a heart icon inside the favorite page should unfavorite the user, and remove it from the page.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Task 3 - Infinity Scroll
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Implement an Infinity Scroll functionality, which would fetch additional users and add them to the list once scrolling all the way down.
+
+###Bonus - Your Personal Touch
+
+- This is your chance to get creative. Add a new, **cool and innovative** feature to the app.
+- Feel free to delete, add, and refactor components as you see fit.
+  **Make sure** that the previous tasks still work.
+
+## Tips / Notes
+
+- All the code you'll change / add will be in the `/src` folder.
+- If you want to use `npm` modules for other parts, go for it - just make sure you know how they work under the hood.
+
+#### Remember: this test is designed to see how you complete tasks that require self learning, not to test your existing knowledge.
+
+## Submitting your project
+
+After you've completed your tasks, and you are ready to submit it, do the following:
+
+1. Make sure all the code is committed and pushed
+2. Add "Powerlink" as a repostiory collaborator.
+3. Send us an email with your repo link
+
+## Good Luck!
