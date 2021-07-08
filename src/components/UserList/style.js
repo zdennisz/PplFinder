@@ -36,11 +36,9 @@ export const SpinnerWrapper = styled.div`
   justify-content: center;
 `;
 
-export const IconButtonWrapper = styled.div``;
-
-export const IconButtons = styled.div`
+export const IconButtonWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  opacity: ${({ isHovered }) => (isHovered ? 1 : 0)};
+  opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
   transition: opacity 0.2s ease-in-out;
 `;
