@@ -5,7 +5,7 @@ This app is a simple application which displays randomly generated user informat
 
 ## Getting Started
 
-To set up the test environment and get this app running locally all you need to do is:
+To get this app running locally all you need to do is:
 
 1. Make sure you have a [Github](https://github.com) account
 2. [Fork this repository](https://github.com/powerlink/PplFinder) to your GitHub account as a private repository.
