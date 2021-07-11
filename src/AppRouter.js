@@ -7,8 +7,8 @@ import NavBar from "components/NavBar";
 const AppRouter = () => {
   return (
     <ThemeProvider>
-      <NavBar />
       <Router>
+        <NavBar />
         <Switch>
           <Route exact path="/" component={Home} />
         </Switch>
