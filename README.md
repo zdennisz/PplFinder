@@ -67,6 +67,7 @@ After you've completed your tasks, and you are ready to submit it, do the follow
 
 1. Make sure all the code is committed and pushed
 2. Add "Powerlink" as a repostiory collaborator.
-3. Send us an email with your repo link
+3. Deploy your app using Github Pages.
+4. Send us an email with your repo link & deployed app url.
 
 ## Good Luck!
