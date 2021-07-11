@@ -16,10 +16,8 @@ To get this app running locally all you need to do is:
 
 ## Your Tasks
 
-This project includes 3 main tasks, all of which are mandatory, besides the bonus questions.
+This project includes 3 main tasks, all of which are mandatory, besides the bonus questions.\
 You can and should learn new skills during the process, you may consult with Google and friends but you will need to explain why you implemented what you implemented, so be responsible for your code.
-
-**Important** - Please make sure to commit after each task, for example, after finishing the first task (Filters), commmit the files with a relevant message: "Task 1 - Filters", and so on.
 
 ### Task 1 - Filters
 
