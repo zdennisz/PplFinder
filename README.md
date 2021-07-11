@@ -8,7 +8,7 @@ This app is a simple application which displays randomly generated user informat
 To get this app running locally all you need to do is:
 
 1. Make sure you have a [Github](https://github.com) account
-2. [Fork this repository](https://github.com/powerlink/PplFinder) to your GitHub account as a private repository.
+2. [Fork this repository](https://github.com/powerlink/PplFinder) to your GitHub account.
 3. Clone your newly created repository
 4. In the created folder install the node modules `npm install`
 5. Run the app `npm start`
