@@ -28,7 +28,23 @@ const UserList = ({ users, isLoading }) => {
   const saveFavUsers = (index) => {
     const indexOfHovered = index.toString()
     setFavUsers(state => { return { ...state, [indexOfHovered]: state[indexOfHovered] ? false : true } });
+
   }
+
+  useEffect(() => {
+    if (favUsers) {
+      const pplToSave = users.filter(function (e, index) {
+        if (favUsers[index]) {
+          return true
+        } else {
+          return false
+        }
+      })
+      localStorage.setItem("pplToSave", JSON.stringify(pplToSave))
+    }
+  }, [favUsers]);
+
+
 
   useEffect(() => {
     setFilteredUsers(users.map((user, index) => {
