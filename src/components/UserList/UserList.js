@@ -8,6 +8,7 @@ import * as S from "./style";
 
 const UserList = ({ users, isLoading }) => {
   const [hoveredUserId, setHoveredUserId] = useState();
+  const [filters, setFilters] = useState({})
 
   const handleMouseEnter = (index) => {
     setHoveredUserId(index);
@@ -16,14 +17,19 @@ const UserList = ({ users, isLoading }) => {
   const handleMouseLeave = () => {
     setHoveredUserId();
   };
+  const checkBoxHandleChange = (val) => {
+    setFilters(state => { return { ...state, [val]: ![val] } });
+    console.log(filters)
+
+  }
 
   return (
     <S.UserList>
       <S.Filters>
-        <CheckBox value="BR" label="Brazil" />
-        <CheckBox value="AU" label="Australia" />
-        <CheckBox value="CA" label="Canada" />
-        <CheckBox value="DE" label="Germany" />
+        <CheckBox value="BR" label="Brazil" onChange={checkBoxHandleChange} />
+        <CheckBox value="AU" label="Australia" onChange={checkBoxHandleChange} />
+        <CheckBox value="CA" label="Canada" onChange={checkBoxHandleChange} />
+        <CheckBox value="DE" label="Germany" onChange={checkBoxHandleChange} />
       </S.Filters>
       <S.List>
         {users.map((user, index) => {
