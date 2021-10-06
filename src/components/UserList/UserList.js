@@ -8,15 +8,15 @@ import * as S from "./style";
 
 const UserList = ({ users, isLoading }) => {
   const [fileredUsers, setFilteredUsers] = useState();
-  const [hoveredUserId, setHoveredUserId] = useState();
+  const [hoveredUserId, setHoveredUserId] = useState({});
+  const [favUsers, setFavUsers] = useState({})
   const [filters, setFilters] = useState({})
 
   const handleMouseEnter = (index) => {
-    console.log("index", index)
-    setHoveredUserId(index);
+    setHoveredUserId(index)
   };
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = (index) => {
     setHoveredUserId();
   };
   const checkBoxHandleChange = (val) => {
@@ -24,6 +24,10 @@ const UserList = ({ users, isLoading }) => {
       return { ...state, [val]: state[val] ? false : true }
     });
 
+  }
+  const saveFavUsers = (index) => {
+    const indexOfHovered = index.toString()
+    setFavUsers(state => { return { ...state, [indexOfHovered]: state[indexOfHovered] ? false : true } });
   }
 
   useEffect(() => {
@@ -36,7 +40,7 @@ const UserList = ({ users, isLoading }) => {
           <S.User
             key={index}
             onMouseEnter={() => handleMouseEnter(index)}
-            onMouseLeave={handleMouseLeave}
+            onMouseLeave={() => handleMouseLeave(index)}
           >
             <S.UserPicture src={user?.picture.large} alt="" />
             <S.UserInfo>
@@ -51,8 +55,8 @@ const UserList = ({ users, isLoading }) => {
                 {user?.location.city} {user?.location.country}
               </Text>
             </S.UserInfo>
-            <S.IconButtonWrapper isVisible={index === hoveredUserId}>
-              <IconButton>
+            <S.IconButtonWrapper isVisible={index === hoveredUserId || favUsers[index]}>
+              <IconButton onClick={() => saveFavUsers(index)}>
                 <FavoriteIcon color="error" />
               </IconButton>
             </S.IconButtonWrapper>
