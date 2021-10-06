@@ -7,6 +7,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import * as S from "./style";
 
 const UserList = ({ users, isLoading }) => {
+  const [fileredUsers, setFilteredUsers] = useState();
   const [hoveredUserId, setHoveredUserId] = useState();
   const [filters, setFilters] = useState({})
 
@@ -18,10 +19,52 @@ const UserList = ({ users, isLoading }) => {
     setHoveredUserId();
   };
   const checkBoxHandleChange = (val) => {
-    setFilters(state => { return { ...state, [val]: ![val] } });
-    console.log(filters)
+    setFilters(state => {
+      return { ...state, [val]: state[val] ? false : true }
+    });
 
   }
+
+  useEffect(() => {
+    setFilteredUsers(users.map((user, index) => {
+      console.log("filters", user)
+      if (filters[user.nat]) {
+        // We filter the user out
+        return null
+      } else {
+        return (
+          <S.User
+            key={index}
+            onMouseEnter={() => handleMouseEnter(index)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <S.UserPicture src={user?.picture.large} alt="" />
+            <S.UserInfo>
+              <Text size="22px" bold>
+                {user?.name.title} {user?.name.first} {user?.name.last}
+              </Text>
+              <Text size="14px">{user?.email}</Text>
+              <Text size="14px">
+                {user?.location.street.number} {user?.location.street.name}
+              </Text>
+              <Text size="14px">
+                {user?.location.city} {user?.location.country}
+              </Text>
+            </S.UserInfo>
+            <S.IconButtonWrapper isVisible={index === hoveredUserId}>
+              <IconButton>
+                <FavoriteIcon color="error" />
+              </IconButton>
+            </S.IconButtonWrapper>
+          </S.User>
+        );
+      }
+
+    }))
+
+
+  }, [filters, users])
+
 
   return (
     <S.UserList>
@@ -30,36 +73,10 @@ const UserList = ({ users, isLoading }) => {
         <CheckBox value="AU" label="Australia" onChange={checkBoxHandleChange} />
         <CheckBox value="CA" label="Canada" onChange={checkBoxHandleChange} />
         <CheckBox value="DE" label="Germany" onChange={checkBoxHandleChange} />
+        <CheckBox value="GB" label="United Kingdom" onChange={checkBoxHandleChange} />
       </S.Filters>
       <S.List>
-        {users.map((user, index) => {
-          return (
-            <S.User
-              key={index}
-              onMouseEnter={() => handleMouseEnter(index)}
-              onMouseLeave={handleMouseLeave}
-            >
-              <S.UserPicture src={user?.picture.large} alt="" />
-              <S.UserInfo>
-                <Text size="22px" bold>
-                  {user?.name.title} {user?.name.first} {user?.name.last}
-                </Text>
-                <Text size="14px">{user?.email}</Text>
-                <Text size="14px">
-                  {user?.location.street.number} {user?.location.street.name}
-                </Text>
-                <Text size="14px">
-                  {user?.location.city} {user?.location.country}
-                </Text>
-              </S.UserInfo>
-              <S.IconButtonWrapper isVisible={index === hoveredUserId}>
-                <IconButton>
-                  <FavoriteIcon color="error" />
-                </IconButton>
-              </S.IconButtonWrapper>
-            </S.User>
-          );
-        })}
+        {fileredUsers}
         {isLoading && (
           <S.SpinnerWrapper>
             <Spinner color="primary" size="45px" thickness={6} variant="indeterminate" />
