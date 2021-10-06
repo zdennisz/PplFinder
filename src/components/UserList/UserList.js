@@ -12,6 +12,7 @@ const UserList = ({ users, isLoading }) => {
   const [filters, setFilters] = useState({})
 
   const handleMouseEnter = (index) => {
+    console.log("index", index)
     setHoveredUserId(index);
   };
 
@@ -27,7 +28,6 @@ const UserList = ({ users, isLoading }) => {
 
   useEffect(() => {
     setFilteredUsers(users.map((user, index) => {
-      console.log("filters", user)
       if (filters[user.nat]) {
         // We filter the user out
         return null
@@ -63,7 +63,7 @@ const UserList = ({ users, isLoading }) => {
     }))
 
 
-  }, [filters, users])
+  }, [filters, users, hoveredUserId])
 
 
   return (
