@@ -4,6 +4,7 @@ import Spinner from "components/Spinner";
 import CheckBox from "components/CheckBox";
 import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
+import { PPL_TO_SAVE } from "constant";
 import * as S from "./style";
 
 const UserList = ({ users, isLoading }) => {
@@ -32,7 +33,8 @@ const UserList = ({ users, isLoading }) => {
   }
 
   useEffect(() => {
-    if (favUsers) {
+    if (favUsers && JSON.stringify(favUsers) !== '{}') {
+
       const pplToSave = users.filter(function (e, index) {
         if (favUsers[index]) {
           return true
@@ -40,7 +42,7 @@ const UserList = ({ users, isLoading }) => {
           return false
         }
       })
-      localStorage.setItem("pplToSave", JSON.stringify(pplToSave))
+      localStorage.setItem(PPL_TO_SAVE, JSON.stringify(pplToSave))
     }
   }, [favUsers]);
 

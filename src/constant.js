@@ -18,3 +18,5 @@ export const COLORS = {
   primary: "primary",
   secondary: "secondary",
 };
+
+export const PPL_TO_SAVE = "PPL_TO_SAVE"

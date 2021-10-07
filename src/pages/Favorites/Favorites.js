@@ -2,8 +2,11 @@ import React from 'react'
 import Text from "components/Text";
 import UserList from "components/UserList";
 import * as S from "./style";
+import { useFavFetch } from "hooks";
+import { PPL_TO_SAVE } from 'constant';
 const Favorites = () => {
-    let favPPl;
+    const { users, isLoading } = useFavFetch(PPL_TO_SAVE);
+
     return (
         <S.Home>
             <S.Content>
@@ -12,7 +15,7 @@ const Favorites = () => {
                         Favorite Ppl
                     </Text>
                 </S.Header>
-                {/* <UserList users={users} isLoading={isLoading} /> */}
+                <UserList users={users} isLoading={isLoading} />
             </S.Content>
         </S.Home>
 
