@@ -4,14 +4,28 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import Text from "components/Text";
 import * as S from "./style";
 
-const User = ({ user, index, lastUser, handleMouseEnter, handleMouseLeave, saveFavUsers, favUsers, hoveredUserId }) => {
+const User = ({ user, index, lastUser, handleMouseEnter, handleMouseLeave, handleSaveFavUsers, favUsers, hoveredUserId }) => {
+
+
+    const onMouseEnter = () => {
+        handleMouseEnter(index)
+    }
+
+    const onMouseLeave = () => {
+        handleMouseLeave(index)
+    }
+
+    const saveFavorite = () => {
+        handleSaveFavUsers(index)
+    }
+
 
     return (
         < S.User
             key={index}
             ref={lastUser}
-            onMouseEnter={() => handleMouseEnter(index)}
-            onMouseLeave={() => handleMouseLeave(index)}>
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}>
             <S.UserPicture src={user?.picture.large} alt="profile picture" />
             <S.UserInfo>
                 <Text size="22px" bold>
@@ -26,7 +40,7 @@ const User = ({ user, index, lastUser, handleMouseEnter, handleMouseLeave, saveF
                 </Text>
             </S.UserInfo>
             <S.IconButtonWrapper isVisible={index === hoveredUserId || favUsers[index]}>
-                <IconButton onClick={() => saveFavUsers(index)}>
+                <IconButton onClick={saveFavorite}>
                     <FavoriteIcon color="error" />
                 </IconButton>
             </S.IconButtonWrapper>

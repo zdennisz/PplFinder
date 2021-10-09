@@ -11,7 +11,6 @@ const UserList = ({ users, isLoading, lastUser }) => {
   const [favUsers, setFavUsers] = useState({})
   const [filters, setFilters] = useState({})
 
-
   const handleMouseEnter = (index) => {
     setHoveredUserId(index)
   };
@@ -20,7 +19,7 @@ const UserList = ({ users, isLoading, lastUser }) => {
     setHoveredUserId();
   };
 
-  const saveFavUsers = (index) => {
+  const handleSaveFavUsers = (index) => {
     const indexOfHovered = index.toString()
     setFavUsers(state => { return { ...state, [indexOfHovered]: state[indexOfHovered] ? false : true } });
 
@@ -34,14 +33,7 @@ const UserList = ({ users, isLoading, lastUser }) => {
 
   useEffect(() => {
     if (favUsers && JSON.stringify(favUsers) !== '{}') {
-
-      const pplToSave = users.filter(function (e, index) {
-        if (favUsers[index]) {
-          return true
-        } else {
-          return false
-        }
-      })
+      const pplToSave = users.filter((item, index) => favUsers[index])
       localStorage.setItem(PPL_TO_SAVE, JSON.stringify(pplToSave))
     }
   }, [favUsers]);
@@ -51,7 +43,6 @@ const UserList = ({ users, isLoading, lastUser }) => {
     const fUsers = users.filter(user => !filters[user.nat])
     setFilteredUsers(fUsers)
   }, [filters, users])
-
 
   return (
     <S.UserList>
@@ -74,7 +65,7 @@ const UserList = ({ users, isLoading, lastUser }) => {
               handleMouseLeave={handleMouseLeave}
               hoveredUserId={hoveredUserId}
               favUsers={favUsers}
-              saveFavUsers={saveFavUsers}
+              handleSaveFavUsers={handleSaveFavUsers}
               lastUser={index + 1 === filteredUsers.length ? lastUser : null} />
           )
         })}
