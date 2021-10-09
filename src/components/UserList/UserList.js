@@ -55,60 +55,31 @@ const UserList = ({ users, isLoading, lastPersonRef }) => {
         return null
       } else {
         return (
-          <>
-            {(index + 1 === users.length) ?
-              <S.User
-                key={index}
-                onMouseEnter={() => handleMouseEnter(index)}
-                onMouseLeave={() => handleMouseLeave(index)}
-                ref={lastPersonRef} >
-                <S.UserPicture src={user?.picture.large} alt="" />
-                <S.UserInfo>
-                  <Text size="22px" bold>
-                    {user?.name.title} {user?.name.first} {user?.name.last}
-                  </Text>
-                  <Text size="14px">{user?.email}</Text>
-                  <Text size="14px">
-                    {user?.location.street.number} {user?.location.street.name}
-                  </Text>
-                  <Text size="14px">
-                    {user?.location.city} {user?.location.country}
-                  </Text>
-                </S.UserInfo>
-                <S.IconButtonWrapper isVisible={index === hoveredUserId || favUsers[index]}>
-                  <IconButton onClick={() => saveFavUsers(index)}>
-                    <FavoriteIcon color="error" />
-                  </IconButton>
-                </S.IconButtonWrapper>
-              </S.User>
-              :
-              <S.User
-                key={index}
-                onMouseEnter={() => handleMouseEnter(index)}
-                onMouseLeave={() => handleMouseLeave(index)}>
-
-                <S.UserPicture src={user?.picture.large} alt="" />
-                <S.UserInfo>
-                  <Text size="22px" bold>
-                    {user?.name.title} {user?.name.first} {user?.name.last}
-                  </Text>
-                  <Text size="14px">{user?.email}</Text>
-                  <Text size="14px">
-                    {user?.location.street.number} {user?.location.street.name}
-                  </Text>
-                  <Text size="14px">
-                    {user?.location.city} {user?.location.country}
-                  </Text>
-                </S.UserInfo>
-                <S.IconButtonWrapper isVisible={index === hoveredUserId || favUsers[index]}>
-                  <IconButton onClick={() => saveFavUsers(index)}>
-                    <FavoriteIcon color="error" />
-                  </IconButton>
-                </S.IconButtonWrapper>
-              </S.User>
-            }
-          </>
-
+          <S.User
+            key={index}
+            ref={(index + 1 === users.length) ? lastPersonRef : null}
+            onMouseEnter={() => handleMouseEnter(index)}
+            onMouseLeave={() => handleMouseLeave(index)}
+            ref={lastPersonRef} >
+            <S.UserPicture src={user?.picture.large} alt="" />
+            <S.UserInfo>
+              <Text size="22px" bold>
+                {user?.name.title} {user?.name.first} {user?.name.last}
+              </Text>
+              <Text size="14px">{user?.email}</Text>
+              <Text size="14px">
+                {user?.location.street.number} {user?.location.street.name}
+              </Text>
+              <Text size="14px">
+                {user?.location.city} {user?.location.country}
+              </Text>
+            </S.UserInfo>
+            <S.IconButtonWrapper isVisible={index === hoveredUserId || favUsers[index]}>
+              <IconButton onClick={() => saveFavUsers(index)}>
+                <FavoriteIcon color="error" />
+              </IconButton>
+            </S.IconButtonWrapper>
+          </S.User>
         );
       }
 
