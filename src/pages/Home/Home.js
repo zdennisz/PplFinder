@@ -7,8 +7,9 @@ import * as S from "./style";
 const Home = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const { users, isLoading } = usePeopleFetch(pageNumber);
+
   const observer = useRef()
-  const lastPersonRef = useCallback(node => {
+  const lastUser = useCallback(node => {
     if (isLoading) return
     if (observer.current) observer.current.disconnect()
     observer.current = new IntersectionObserver(observable => {
@@ -29,7 +30,7 @@ const Home = () => {
             PplFinder
           </Text>
         </S.Header>
-        <UserList lastPersonRef={lastPersonRef} users={users} isLoading={isLoading} />
+        <UserList lastUser={lastUser} users={users} isLoading={isLoading} />
       </S.Content>
     </S.Home>
   );
