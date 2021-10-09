@@ -59,9 +59,8 @@ const UserList = ({ users, isLoading, lastPersonRef }) => {
             key={index}
             ref={(index + 1 === users.length) ? lastPersonRef : null}
             onMouseEnter={() => handleMouseEnter(index)}
-            onMouseLeave={() => handleMouseLeave(index)}
-            ref={lastPersonRef} >
-            <S.UserPicture src={user?.picture.large} alt="" />
+            onMouseLeave={() => handleMouseLeave(index)}>
+            <S.UserPicture src={user?.picture.large} alt="profile picture" />
             <S.UserInfo>
               <Text size="22px" bold>
                 {user?.name.title} {user?.name.first} {user?.name.last}
