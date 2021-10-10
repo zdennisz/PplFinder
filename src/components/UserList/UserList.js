@@ -5,7 +5,7 @@ import User from "components/User";
 import { PPL_TO_SAVE } from "constant";
 import * as S from "./style";
 
-const UserList = ({ users, isLoading, lastUser }) => {
+const UserList = ({ users, isLoading, lastUser, isFavList }) => {
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [hoveredUserId, setHoveredUserId] = useState({});
   const [favUsers, setFavUsers] = useState({})
@@ -20,9 +20,7 @@ const UserList = ({ users, isLoading, lastUser }) => {
   };
 
   const handleSaveFavUsers = (index) => {
-    const indexOfHovered = index.toString()
-    setFavUsers(state => { return { ...state, [indexOfHovered]: state[indexOfHovered] ? false : true } });
-
+    setFavUsers(state => { return { ...state, [`${index}`]: state[`${index}`] ? false : true } });
   }
 
   const checkBoxHandleChange = (val) => {
@@ -36,6 +34,7 @@ const UserList = ({ users, isLoading, lastUser }) => {
       const pplToSave = filteredUsers.filter((item, index) => favUsers[index])
       localStorage.setItem(PPL_TO_SAVE, JSON.stringify(pplToSave))
     }
+
   }, [favUsers]);
 
 
@@ -63,7 +62,7 @@ const UserList = ({ users, isLoading, lastUser }) => {
               handleMouseEnter={handleMouseEnter}
               handleMouseLeave={handleMouseLeave}
               hoveredUserId={hoveredUserId}
-              favUser={favUsers[index]}
+              favUser={isFavList ? true : favUsers[index]}
               handleSaveFavUsers={handleSaveFavUsers}
               lastUser={index + 1 === filteredUsers.length ? lastUser : null} />
           )

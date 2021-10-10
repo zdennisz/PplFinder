@@ -15,7 +15,7 @@ const Favorites = () => {
                         Favorite Ppl
                     </Text>
                 </S.Header>
-                <UserList users={users} isLoading={isLoading} />
+                <UserList users={users} isLoading={isLoading} isFavList={true} />
             </S.Content>
         </S.Home>
 
