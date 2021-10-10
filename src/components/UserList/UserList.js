@@ -33,7 +33,7 @@ const UserList = ({ users, isLoading, lastUser }) => {
 
   useEffect(() => {
     if (favUsers && JSON.stringify(favUsers) !== '{}') {
-      const pplToSave = users.filter((item, index) => favUsers[index])
+      const pplToSave = filteredUsers.filter((item, index) => favUsers[index])
       localStorage.setItem(PPL_TO_SAVE, JSON.stringify(pplToSave))
     }
   }, [favUsers]);
@@ -55,7 +55,6 @@ const UserList = ({ users, isLoading, lastUser }) => {
       </S.Filters>
       <S.List>
         {filteredUsers.map((user, index) => {
-
           return (
             <User
               index={index}
@@ -64,7 +63,7 @@ const UserList = ({ users, isLoading, lastUser }) => {
               handleMouseEnter={handleMouseEnter}
               handleMouseLeave={handleMouseLeave}
               hoveredUserId={hoveredUserId}
-              favUsers={favUsers}
+              favUser={favUsers[index]}
               handleSaveFavUsers={handleSaveFavUsers}
               lastUser={index + 1 === filteredUsers.length ? lastUser : null} />
           )
