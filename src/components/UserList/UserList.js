@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Spinner from "components/Spinner";
 import CheckBox from "components/CheckBox";
 import User from "components/User";
-import { PPL_TO_SAVE } from "constant";
 import * as S from "./style";
 
 const UserList = ({ users, isLoading, lastUser, isFavList }) => {
@@ -10,6 +9,7 @@ const UserList = ({ users, isLoading, lastUser, isFavList }) => {
   const [hoveredUserId, setHoveredUserId] = useState({});
   const [favUsers, setFavUsers] = useState({})
   const [filters, setFilters] = useState({})
+  const firstInit = useRef(true)
 
   const handleMouseEnter = (index) => {
     setHoveredUserId(index)
@@ -20,7 +20,8 @@ const UserList = ({ users, isLoading, lastUser, isFavList }) => {
   };
 
   const handleSaveFavUsers = (index) => {
-    setFavUsers(state => { return { ...state, [`${index}`]: state[`${index}`] ? false : true } });
+    const uniqueId = filteredUsers[index].login.salt
+    setFavUsers(state => { return { ...state, [`${uniqueId}`]: state[`${uniqueId}`] ? false : true } });
   }
 
   const checkBoxHandleChange = (val) => {
@@ -31,18 +32,40 @@ const UserList = ({ users, isLoading, lastUser, isFavList }) => {
 
   useEffect(() => {
     if (favUsers && JSON.stringify(favUsers) !== '{}') {
-      const pplToSave = filteredUsers.filter((item, index) => favUsers[index])
-      localStorage.setItem(PPL_TO_SAVE, JSON.stringify(pplToSave))
+
+      const pplToSave = filteredUsers.filter((user, index) => favUsers[user.login.salt])
+      console.log("ppltosave", pplToSave)
+      if (!isFavList || !firstInit.current) {
+        window.dispatchEvent(new CustomEvent('storageItemSet',
+          { cancelable: true, bubbles: true, detail: pplToSave }
+        ))
+
+      }
+
     }
-
   }, [favUsers]);
-
 
   useEffect(() => {
     const fUsers = users.filter(user => !filters[user.nat])
-    setFilteredUsers(fUsers)
+    if (fUsers.length === 0) {
+      setFilteredUsers(users)
+    } else {
+      setFilteredUsers(fUsers)
+    }
   }, [filters, users])
 
+  useEffect(() => {
+    // At first init make all the people as favorites since we are in favorite list
+    if (isFavList && firstInit.current && filteredUsers.length !== 0) {
+      let newState = {}
+
+      filteredUsers.map((user, index) => {
+        newState = { ...newState, [`${user.login.salt}`]: true }
+      })
+      setFavUsers(newState)
+      firstInit.current = false
+    }
+  }, [filteredUsers])
   return (
     <S.UserList>
       <S.Filters>
@@ -56,13 +79,14 @@ const UserList = ({ users, isLoading, lastUser, isFavList }) => {
         {filteredUsers.map((user, index) => {
           return (
             <User
+              key={index}
               index={index}
               user={user}
               filteredUsers={filteredUsers}
               handleMouseEnter={handleMouseEnter}
               handleMouseLeave={handleMouseLeave}
               hoveredUserId={hoveredUserId}
-              favUser={isFavList ? true : favUsers[index]}
+              favUser={isFavList ? true : favUsers[user.login.salt]}
               handleSaveFavUsers={handleSaveFavUsers}
               lastUser={index + 1 === filteredUsers.length ? lastUser : null} />
           )

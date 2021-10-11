@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Text from "components/Text";
 import UserList from "components/UserList";
 import * as S from "./style";
 import { useFavFetch } from "hooks";
 import { PPL_TO_SAVE } from 'constant';
 const Favorites = () => {
-    const { users, isLoading } = useFavFetch(PPL_TO_SAVE);
+    const { users, isLoading, fetchUsers } = useFavFetch(PPL_TO_SAVE);
+    const firstInit = useRef(true)
+
 
     return (
         <S.Home>

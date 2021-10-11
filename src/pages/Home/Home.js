@@ -1,12 +1,13 @@
 import React, { useState, useRef, useCallback } from "react";
 import Text from "components/Text";
 import UserList from "components/UserList";
-import { usePeopleFetch } from "hooks";
+import { useFavFetch, usePeopleFetch } from "hooks";
 import * as S from "./style";
 
 const Home = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const { users, isLoading } = usePeopleFetch(pageNumber);
+  useFavFetch()
 
   const observer = useRef()
   const lastUser = useCallback(node => {

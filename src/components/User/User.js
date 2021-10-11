@@ -22,7 +22,6 @@ const User = ({ user, index, lastUser, handleMouseEnter, handleMouseLeave, handl
 
     return (
         < S.User
-            key={index}
             ref={lastUser}
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}>
