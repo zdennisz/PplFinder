@@ -71,13 +71,17 @@ const UserList = ({ users, isLoading, lastUser, isFavList }) => {
   }, [filteredUsers])
   return (
     <S.UserList>
-      <S.Filters>
-        <CheckBox value="BR" label="Brazil" onChange={checkBoxHandleChange} />
-        <CheckBox value="AU" label="Australia" onChange={checkBoxHandleChange} />
-        <CheckBox value="CA" label="Canada" onChange={checkBoxHandleChange} />
-        <CheckBox value="DE" label="Germany" onChange={checkBoxHandleChange} />
-        <CheckBox value="GB" label="United Kingdom" onChange={checkBoxHandleChange} />
-      </S.Filters>
+      {!isFavList &&
+        <>
+          <S.Filters>
+            <CheckBox value="BR" label="Brazil" onChange={checkBoxHandleChange} />
+            <CheckBox value="AU" label="Australia" onChange={checkBoxHandleChange} />
+            <CheckBox value="CA" label="Canada" onChange={checkBoxHandleChange} />
+            <CheckBox value="DE" label="Germany" onChange={checkBoxHandleChange} />
+            <CheckBox value="GB" label="United Kingdom" onChange={checkBoxHandleChange} />
+          </S.Filters>
+        </>}
+
       <S.List>
         {filteredUsers.map((user, index) => {
           return (
