@@ -15,13 +15,13 @@ const NavBar = ({ navigate }) => {
         history.push("/favorites")
         break;
       default:
-        history.push("/")
+        history.replace("/")
     }
 
   };
 
   useEffect(() => {
-    history.push("/")
+    history.replace("/")
   }, [])
 
   return (

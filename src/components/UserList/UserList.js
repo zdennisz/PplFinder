@@ -20,21 +20,23 @@ const UserList = ({ users, isLoading, lastUser, isFavList }) => {
   };
 
   const handleSaveFavUsers = (index) => {
+    // Add user to the favorite state
     const uniqueId = filteredUsers[index].login.salt
     setFavUsers(state => { return { ...state, [`${uniqueId}`]: state[`${uniqueId}`] ? false : true } });
   }
 
   const checkBoxHandleChange = (val) => {
+    // Set the filters to true/false 
     setFilters(state => {
       return { ...state, [val]: state[val] ? false : true }
     });
   }
 
   useEffect(() => {
+    // Save the ppl which are added to favorite state
     if (favUsers && JSON.stringify(favUsers) !== '{}') {
 
       const pplToSave = filteredUsers.filter((user, index) => favUsers[user.login.salt])
-      console.log("ppltosave", pplToSave)
       if (!isFavList || !firstInit.current) {
         window.dispatchEvent(new CustomEvent('storageItemSet',
           { cancelable: true, bubbles: true, detail: pplToSave }
@@ -46,6 +48,7 @@ const UserList = ({ users, isLoading, lastUser, isFavList }) => {
   }, [favUsers]);
 
   useEffect(() => {
+    // Filter out the users and if no filters are active then set all the users as filtered users
     const fUsers = users.filter(user => !filters[user.nat])
     if (fUsers.length === 0) {
       setFilteredUsers(users)

@@ -5,7 +5,7 @@ import * as S from "./style";
 import { useFavFetch } from "hooks";
 import { PPL_TO_SAVE } from 'constant';
 const Favorites = () => {
-    const { users, isLoading, fetchUsers } = useFavFetch(PPL_TO_SAVE);
+    const { users, isLoading } = useFavFetch(PPL_TO_SAVE);
 
     return (
         <S.Home>
